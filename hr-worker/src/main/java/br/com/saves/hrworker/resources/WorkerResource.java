@@ -4,6 +4,9 @@ import br.com.saves.hrworker.entities.Worker;
 import br.com.saves.hrworker.repositories.WorkerRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,14 +16,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@RefreshScope
 @RestController
 @RequestMapping(value = "/workers")
-@AllArgsConstructor
 @Slf4j
 public class WorkerResource {
 
+    @Value("${test.config}")
+    private String testConfig;
+
+    @Autowired
     private Environment env;
 
+    @Autowired
     private WorkerRepository workerRepository;
 
     @GetMapping
