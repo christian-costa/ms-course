@@ -29,6 +29,12 @@ public class WorkerResource {
         return ResponseEntity.ok(list);
     }
 
+    @GetMapping(value = "/configs")
+    public ResponseEntity<Void> getConfigs() {
+        log.info( "CONFIG: " + env.getProperty("test.config"));
+        return ResponseEntity.noContent().build();
+    }
+
     @GetMapping(value = "/{id}")
     public ResponseEntity<Worker> findById(@PathVariable Long id) {
 
