@@ -8,5 +8,7 @@ spring:
         git:
           default-label: main
           uri: https://github.com/christian-costa/ms-course-configs
+          username: christian.reis.am@gmail.com
+          password: crc31831351
 server:
   port: 8888
