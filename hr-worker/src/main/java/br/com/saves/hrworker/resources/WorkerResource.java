@@ -22,9 +22,6 @@ import java.util.List;
 @Slf4j
 public class WorkerResource {
 
-    @Value("${test.config}")
-    private String testConfig;
-
     @Autowired
     private Environment env;
 
@@ -39,7 +36,7 @@ public class WorkerResource {
 
     @GetMapping(value = "/configs")
     public ResponseEntity<Void> getConfigs() {
-        log.info( "CONFIG: " + env.getProperty("test.config"));
+        //log.info( "CONFIG: " + env.getProperty("test.config"));
         return ResponseEntity.noContent().build();
     }
 
@@ -52,7 +49,7 @@ public class WorkerResource {
             e.printStackTrace();
         }*/
 
-        log.info("PORT = "+ env.getProperty("local.server.port"));
+        //log.info("PORT = "+ env.getProperty("local.server.port"));
         Worker worker = workerRepository.findById(id).get();
         return ResponseEntity.ok(worker);
     }
